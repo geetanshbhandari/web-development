@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Practice Questions for HTML</title>
+  </head>
+  <body>
+    <!--
+    IMAGE HOSTING OPTIONS:
+
+    1) HTTPS LINK (good for practice ✅)
+    <img src="https://example.com/virat.jpg" alt="Virat Kohli">
+    - Easy and quick
+    - No files to push
+    - ⚠️ Link might break if website removes the image
+
+    2) LOCAL IMAGE PUSHED TO GITHUB (good for real projects ✅)
+    <img src="virat-kohli.jpg" alt="Virat Kohli">
+    - Image never breaks or disappears
+    - Full control over the image
+    - Self contained repo, everything in one place
+    - GitHub gives plenty of free storage so no need to worry!
+
+    💡 SIMPLE RULE:
+    - Learning/practice  → HTTPS link ✅
+    - Real projects      → push image to GitHub ✅
+
+    ⚠️ NEVER rely on HTTPS links for real projects
+    as the image can be removed anytime by the website!
+-->
+    <!-- Question 1 -->
+    <h1>Avengers</h1>
+    <h2>Iron Man</h2>
+    <p>Also goes by the name <b>Tony Stark</b></p>
+
+    <h2>Captain America</h2>
+    <p>Also goes by the name <b>Steve Rogers</b></p>
+
+    <h2>Hulk</h2>
+    <p>Also goes by the name <b>Bruce Banner</b></p>
+
+    <!-- Question 2 -->
+    <h1>List of Fruits</h1>
+    <ul type="square">
+      <li>
+        Apple
+        <a
+          target="_blank"
+          href="https://png.pngtree.com/png-vector/20231017/ourmid/pngtree-3d-red-apple-png-with-green-leaf-png-image_10201408.png"
+          >see an apple</a
+        >
+      </li>
+
+      <li>
+        Orange
+        <a
+          target="_blank"
+          href="https://static.wikia.nocookie.net/fruit/images/e/e9/Orange0.webp/revision/latest?cb=20260430020732"
+          >see an orange</a
+        >
+      </li>
+      <li>
+        Mango
+        <a
+          target="_blank"
+          href="https://img.magnific.com/free-vector/vector-ripe-yellow-orange-red-whole-sliced-mango-cubes-with-leaf-isolated-white-background_1284-45465.jpg?semt=ais_hybrid&w=740&q=80"
+          >see a mango</a
+        >
+      </li>
+    </ul>
+
+    <!--
+
+    DIFFERENCE:
+    - Real URL  = actual web address of the website (works perfectly ✅)
+    - Base64    = image converted to text, not a web address (avoid ❌)
+
+    💡 HOW TO GET HTTPS IMAGE LINK FOR ANCHOR TAG:
+    Google Images → click image → right click → "Copy image address"
+    → always gives you a proper https:// link ✅
+
+    target="_blank" → opens link in new tab ✅
+    target="_self"  → opens in same tab (default) ✅
+-->
+
+    <hr />
+
+    <!-- Question 3 ( Creating a basic portfolio)-->
+
+    <h1>Geetansh Bhandari</h1>
+
+    <img src="geetansh-bhandari.png" alt="profile picture" width="30%" />
+
+    <h2>Education</h2>
+    <p>
+      Geetansh Bhandari is currently pursuing a Bachelor of Computer Science at
+      the University of Newcastle, Australia.
+    </p>
+
+    <h2>Skills</h2>
+    <ul type="square">
+      <li>Java</li>
+      <li>HTML</li>
+      <li>CSS</li>
+      <li>Python</li>
+      <li>Git</li>
+      <li>GitHub</li>
+    </ul>
+
+    <h2>Hobbies</h2>
+    <p>
+      Geetansh enjoys competitive programming, exploring AI and machine
+      learning, watching cricket and continuous self improvement.
+    </p>
+
+    <h2>Contact</h2>
+    <ul type="square">
+      <li>
+        <a target="_blank" href="mailto:geetanshbhandari530@gmail.com">Email</a>
+      </li>
+      <li>
+        <a target="_blank" href="https://github.com/geetanshbhandari">GitHub</a>
+      </li>
+      <li>
+        <a
+          target="_blank"
+          href="https://www.linkedin.com/in/geetansh-bhandari-360a20294/"
+          >LinkedIn</a
+        >
+      </li>
+    </ul>
+
+    <p><b>Made with &hearts; by Geetansh Bhandari.</b></p>
+
+    <hr />
+
+    <!-- Question 4 -->
+
+    <p>Hello World</p>
+
+    <!-- Question 5 -->
+    <h1>Delta</h1>
+    <h2>Full Stack Web Development</h2>
+    <h3>MERN Stack</h3>
+    <p>Let's begin our learning journey!</p>
+
+    <!-- Question 6 -->
+    <p>
+      <a target="_blank" href="https://www.apnacollege.in/">Apna College</a>
+    </p>
+
+    <hr />
+
+    <!-- Question 7 -->
+    <p><b>Rank list of Students:</b></p>
+    <ol type="1">
+      <li>Deepak</li>
+      <li>Epsita</li>
+      <li>Lakshita</li>
+      <li>Tanmay</li>
+      <li>Agrim</li>
+    </ol>
+
+    <!--
+    HR TAG:
+    Stands for Horizontal Rule.
+    Used to create a horizontal line/divider between sections.
+    It is a SELF CLOSING tag!
+
+    Syntax:
+    <hr>
+
+    Attributes:
+    - No major attributes needed in HTML5
+    - Styling is done via CSS (color, width, thickness etc)
+
+    Example:
+    <h2>Education</h2>
+    <p>Some text here...</p>
+    <hr>                        ← divider line between sections
+    <h2>Skills</h2>
+
+    =====================================================
+
+    HTML ENTITIES:
+    Special characters that cannot be typed directly in HTML.
+    Always starts with & and ends with ;
+
+    FAMOUS HTML ENTITIES:
+    &hearts;  → ♥  (heart)
+    &copy;    → ©  (copyright)
+    &reg;     → ®  (registered)
+    &trade;   → ™  (trademark)
+    &amp;     → &  (ampersand)
+    &lt;      → <  (less than)
+    &gt;      → >  (greater than)
+    &nbsp;    →    (non breaking space)
+    &euro;    → €  (euro)
+    &pound;   → £  (pound)
+    &dollar;  → $  (dollar)
+    &star;    → ☆  (star)
+
+    💡 Rule to remember:
+    If a character has special meaning in HTML (like < or >)
+    or cant be typed easily → use an HTML entity! ✅
+-->
+  </body>
+</html>
