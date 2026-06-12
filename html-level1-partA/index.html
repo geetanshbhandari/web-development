@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+  <!-- lang is an attribute here -->
+  <head>
+    <meta charset="UTF-8" />
+    <!-- charset is an attribute here -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My first HTMl file.</title>
+  </head>
+  <body>
+    <!-- learning about the heading tags and paragraph tag -->
+    <h1>This is the first heading.</h1>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem quo
+      illum exercitationem consequatur deleniti saepe consequuntur accusantium,
+      ipsam a harum assumenda sequi. Facere corporis quidem minus neque
+      veritatis, culpa voluptas?
+      <!-- lorem is the keyword which is used to generate dummy text  -->
+    </p>
+
+    <h2>This is the second heading.</h2>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. In earum
+      asperiores quidem perferendis voluptate dicta, magnam quod hic voluptates
+      recusandae voluptas unde perspiciatis, consequatur eos.
+    </p>
+
+    <h3>This is the third heading.</h3>
+    <p>
+      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aperiam officia
+      veniam nemo assumenda modi optio nam. Natus voluptatum in quo?
+    </p>
+
+    <p>Hello World.</p>
+    <!-- learning about the bold and italic tags -->
+    <p>
+      My name is <b><i>Geetansh Bhandari</i></b>
+    </p>
+
+    <!-- learning about ordered and unordered lists below  -->
+    <h4>Let's talk about the worldwide famous fruits and their benefits:</h4>
+
+    <ol type="A">
+      <li>
+        Apple
+        <ul type="square">
+          <li>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+            Consectetur animi reprehenderit suscipit eligendi maxime repellat.
+          </li>
+          <li>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Id, odio!
+            Unde sint dignissimos beatae veniam!
+          </li>
+          <li>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Labore
+            exercitationem vero nisi eos dicta! At.
+          </li>
+        </ul>
+      </li>
+      <li>
+        Mango
+        <ul type="square">
+          <li>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam nisi
+            iusto ipsum a inventore ducimus.
+          </li>
+          <li>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam nisi
+            iusto ipsum a inventore ducimus.
+          </li>
+          <li>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam nisi
+            iusto ipsum a inventore ducimus.
+          </li>
+        </ul>
+      </li>
+      <li>
+        Kiwi
+        <ul type="square">
+          <li>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam nisi
+            iusto ipsum a inventore ducimus.
+          </li>
+          <li>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam nisi
+            iusto ipsum a inventore ducimus.
+          </li>
+          <li>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam nisi
+            iusto ipsum a inventore ducimus.
+          </li>
+        </ul>
+      </li>
+      <li>
+        Dragon Fruit
+        <ul type="square">
+          <li>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam nisi
+            iusto ipsum a inventore ducimus.
+          </li>
+          <li>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam nisi
+            iusto ipsum a inventore ducimus.
+          </li>
+          <li>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam nisi
+            iusto ipsum a inventore ducimus.
+          </li>
+        </ul>
+      </li>
+    </ol>
+
+    <!-- 
+    NESTED LIST RULE:
+    ul/ol can ONLY have li as direct children, NEVER nest ul/ol directly inside ol/ul!
+    
+    ❌ WRONG:
+    <ol>
+        <li>Apple</li>
+        <ul>              ← ul is direct child of ol (WRONG!)
+            <li>...</li>
+        </ul>
+    </ol>
+
+    ✅ CORRECT:
+    <ol>
+        <li>Apple         ← close li AFTER the nested ul
+            <ul>          ← ul is child of li (CORRECT!)
+                <li>...</li>
+            </ul>
+        </li>             ← li closes here, after ul
+    </ol>
+
+    Simple rule: nested list belongs to the li item, not the parent list!
+-->
+
+    <p><b>Links for some useful websites are provided below:</b></p>
+
+    <!-- Learning about the anchor tag, and the target attribute ! -->
+    <ol type="a">
+      <li>
+        <a target="_blank" href="https://www.netflix.com/au/">Netflix</a>: Lorem
+        ipsum dolor sit amet consectetur adipisicing elit. Aspernatur, sunt.
+      </li>
+      <li>
+        <a target="_blank" href="https://learned.au/">LearnEd</a>: Lorem ipsum
+        dolor sit amet consectetur adipisicing elit. Voluptatum, quia!
+      </li>
+      <li>
+        <a target="_blank" href="https://www.newcastle.edu.au/"
+          >University of Newcastle (UON)</a
+        >: Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates,
+        laboriosam.
+      </li>
+      <li>
+        <a target="_blank" href="https://takeuforward.org/">takeUforward</a>:
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Incidunt, ea.
+      </li>
+    </ol>
+  </body>
+</html>
