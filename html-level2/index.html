@@ -1,0 +1,474 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HTML Level 2 Notes - Geetansh Bhandari</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!--
+      WHAT ARE SEMANTIC TAGS AND WHY DO THEY MATTER?
+
+      In older HTML, developers used divs for everything, which made code hard to read
+      because every section looked the same. HTML5 introduced semantic tags, which are
+      tags whose names describe the purpose of the content inside them.
+
+      For example, instead of writing a div for navigation, you write a nav tag.
+      Instead of a div for the page title area, you write a header tag.
+      This makes it immediately clear what each part of the page is doing.
+
+      There are two major benefits to using semantic tags.
+      First, search engines like Google read your semantic tags to understand your page
+      structure, which improves your SEO (search engine ranking).
+      Second, screen readers used by visually impaired users rely on semantic tags
+      to navigate the page and describe content to the user.
+
+      Here is a summary of the main semantic tags you should know:
+
+      header  -  The top section of a page, usually containing a title and navigation.
+      nav     -  A group of navigation links. Placed inside header or footer typically.
+      main    -  The primary content of the page. There should be only one main per page.
+      section -  A thematic grouping of content, usually with its own heading.
+      article -  Self-contained content that would make sense even outside the page,
+                 like a blog post, a news story, or a product card.
+      aside   -  Related but non-essential content, like a sidebar, tips, or ads.
+      footer  -  The bottom section of a page, usually containing credits and contact info.
+    -->
+
+    <header>
+      <h1>HTML Level 2 Notes</h1>
+
+      <!--
+        The nav tag is specifically meant to wrap the main navigation links of a page.
+        It tells browsers and screen readers that this block is for site navigation.
+        You can have more than one nav tag on a page (for example, one in the header
+        and one in the footer), but you should only use it for actual navigation links,
+        not for every group of links on the page.
+      -->
+      <nav>
+        <ul>
+          <li>
+            <a href="../HTML Level 1 Part A and B/index.html"
+              >Lorem ipsum dolor sit amet consectetur adipisicing.</a
+            >
+          </li>
+          <li>
+            <a href="../recipes.html"
+              >Lorem ipsum dolor sit amet consectetur.</a
+            >
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <!-- ======================================================= -->
+      <!--           TOPIC 1: BLOCK ELEMENTS VS INLINE ELEMENTS     -->
+      <!-- ======================================================= -->
+
+      <section>
+        <h2>Block Level Elements vs Inline Elements</h2>
+
+        <!--
+          Every HTML element is either block level or inline level, and understanding
+          this difference is fundamental to understanding how pages are laid out.
+
+          Block level elements always start on a new line and stretch to fill the full
+          width of their container. No other element can sit next to them on the same
+          line unless you use CSS to change that behavior.
+
+          Common block level elements: div, p, h1 through h6, ul, ol, li, section,
+          article, header, footer, nav, main, aside, and form.
+
+          Inline elements do not start on a new line. They only take up as much width
+          as their content requires, and they sit alongside other elements on the same line.
+
+          Common inline elements: span, a, strong, em, img, input, label, and button.
+
+          The most important rule to memorize: never place a block level element inside
+          an inline element. For example, never put a div or a p tag inside a span or
+          an anchor tag. The browser will try to fix it, but the result is unpredictable
+          and your HTML will be technically invalid.
+        -->
+
+        <p>
+          This paragraph is a block element. It always starts on a new line.
+        </p>
+        <p>
+          This sentence contains an inline element.
+          <strong>This text is bold using the strong tag</strong> and the
+          sentence continues on the same line without any break.
+        </p>
+        <p>
+          The anchor tag is also inline. Visit
+          <a
+            href="https://www.netflix.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Netflix</a
+          >
+          and notice how the link sits naturally within this sentence.
+        </p>
+      </section>
+
+      <hr />
+
+      <!-- ======================================================= -->
+      <!--              TOPIC 2: THE DIV AND SPAN TAGS              -->
+      <!-- ======================================================= -->
+
+      <section>
+        <h2>The div Tag and the span Tag</h2>
+
+        <!--
+          The div tag is a generic block level container with no visual appearance of its own.
+          Its only job is to group a set of elements together so that you can target that
+          group with CSS or JavaScript. Think of it as an invisible box around a chunk of content.
+
+          The span tag is a generic inline container, also with no visual appearance by itself.
+          It is used to wrap a small piece of content, usually a word or phrase within a sentence,
+          so you can style just that part without affecting the rest of the line.
+
+          A practical way to decide which one to use:
+          If you are grouping a section or a block of content, use div.
+          If you are targeting a specific word or short phrase inside existing text, use span.
+
+          Both div and span became far more useful once you start working with CSS,
+          because that is when you start assigning colors, sizes, and layouts to them.
+        -->
+
+        <div>
+          <p>
+            This paragraph is grouped inside a div along with the links below.
+          </p>
+          <a
+            href="https://www.google.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Open Google</a
+          >
+          &nbsp;
+          <a
+            href="https://www.chess.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Open Chess.com</a
+          >
+        </div>
+
+        <br />
+
+        <p>
+          I am currently studying at the
+          <span>University of Newcastle.</span>
+          The university name is wrapped in a span but the sentence stays on one
+          line.
+        </p>
+
+        <p>
+          Australia is a <span>wonderful country.</span>
+          This is another example of span being used inside a paragraph.
+        </p>
+
+        <p>My username on Chess.com is <span>Geetuop_2906.</span></p>
+      </section>
+
+      <hr />
+
+      <!-- ======================================================= -->
+      <!--        TOPIC 3: SUBSCRIPT AND SUPERSCRIPT TAGS           -->
+      <!-- ======================================================= -->
+
+      <section>
+        <h2>Subscript and Superscript Tags</h2>
+
+        <!--
+          The sub tag renders text slightly below the normal text baseline and in a smaller
+          font size. It is used for subscript content like the numbers in chemical formulas,
+          mathematical indices, and footnote references.
+
+          The sup tag renders text slightly above the normal text baseline and also in a
+          smaller font size. It is used for superscript content like exponents in math,
+          powers, and ordinal numbers such as 1st, 2nd, and 3rd.
+
+          Important distinction: use these tags only when the subscript or superscript
+          has actual semantic meaning, like in a chemical or mathematical formula.
+          Never use sub or sup just to make text look smaller or to position it.
+          For visual positioning without semantic meaning, CSS is the right tool.
+        -->
+
+        <h3>Chemical Formulas</h3>
+        <ol>
+          <li>Water is H<sub>2</sub>O</li>
+          <li>Carbon Dioxide is CO<sub>2</sub></li>
+          <li>Glucose is C<sub>6</sub>H<sub>12</sub>O<sub>6</sub></li>
+        </ol>
+
+        <h3>Mathematical Formulas</h3>
+        <ol>
+          <li>
+            Pythagorean Theorem: c<sup>2</sup> = a<sup>2</sup> + b<sup>2</sup>
+          </li>
+          <li>(a + b)<sup>2</sup> = a<sup>2</sup> + 2ab + b<sup>2</sup></li>
+        </ol>
+
+        <p><span>Another example: </span>Today is the 16<sup>th</sup> of June and 2<sup>4</sup> = 16 always.</p>
+      </section>
+
+      <hr />
+
+      <!-- ======================================================= -->
+      <!--                  TOPIC 4: HTML ENTITIES                  -->
+      <!-- ======================================================= -->
+
+      <section>
+        <h2>HTML Entities</h2>
+
+        <!--
+          HTML entities are special character codes that you use when you want to display
+          a character that either has a special meaning in HTML or is not available on
+          your keyboard.
+
+          The format for a named entity is: an ampersand, then the name, then a semicolon.
+          For example: &lt; displays the less than sign.
+
+          The format for a numeric entity is: an ampersand, a hash symbol, then the number,
+          then a semicolon.
+          For example: &#9729; displays a cloud symbol.
+
+          Here are the most commonly used entities that you should memorize:
+
+          &lt;        displays the less than sign (<)
+          &gt;        displays the greater than sign (>)
+          &amp;       displays the ampersand character itself (&)
+          &nbsp;      inserts a non-breaking space (useful for adding multiple spaces)
+          &copy;      displays the copyright symbol
+          &reg;       displays the registered trademark symbol
+          &trade;     displays the trademark symbol
+          &hearts;    displays a heart symbol
+          &bigstar;   displays a large star symbol
+
+          Why is &nbsp; important? Browsers automatically collapse multiple spaces into one
+          single space. If you need two or three spaces in a row, you must use &nbsp; for each
+          extra space you want to display.
+
+          Why do we need &lt; and &gt;? If you write a less than sign directly in HTML without
+          using &lt;, the browser might think you are starting a new tag and break your page.
+          Always use entities when displaying these reserved characters as visible text.
+        -->
+
+        <p>a &lt; b (using &amp;lt; to show the less than sign)</p>
+        <p>a &gt; b (using &amp;gt; to show the greater than sign)</p>
+        <p>a &hearts; b (heart symbol using &amp;hearts;)</p>
+        <p>Geetansh Bhandari is a &bigstar; (big star using &amp;bigstar;)</p>
+        <p>
+          Three&nbsp;&nbsp;&nbsp;spaces here (extra spaces using &amp;nbsp;)
+        </p>
+        <p>The sky is cloudy &#9729; &amp; it will rain &#9748; today.</p>
+        <p>Copyright &copy; 2026 Geetansh Bhandari</p>
+      </section>
+
+      <hr />
+
+      <!-- ======================================================= -->
+      <!--                  TOPIC 5: THE VIDEO TAG                  -->
+      <!-- ======================================================= -->
+
+      <section>
+        <h2>The Video Tag</h2>
+
+        <!--
+          The video tag is a semantic tag which is used to embed a video file directly into a webpage.
+          Before HTML5, you needed a plugin like Flash to play video on a webpage.
+          Now you can just use this one tag and the browser handles everything.
+
+          Here are the important attributes for the video tag:
+
+          src       Specifies the path to the video file you want to display.
+          controls  Adds the default browser video controls like play, pause, and volume.
+                    Without this attribute, the user will have no way to control the video.
+          autoplay  Makes the video start playing automatically when the page loads.
+                    Note that most modern browsers block autoplay unless muted is also present.
+          loop      Makes the video restart from the beginning once it finishes playing.
+          muted     Starts the video without any sound. This is required for autoplay to
+                    work in most browsers due to browser autoplay policies.
+          poster    Specifies an image to show as a thumbnail before the user plays the video.
+          height    Sets the display height of the video player in pixels.
+          width     Sets the display width of the video player in pixels or as a percentage.
+
+          The MP4 format is supported by all modern browsers so you do not need to provide
+          multiple video formats. Just use MP4 and you are covered.
+        -->
+
+        <video
+          src="car-video.mp4"
+          height="300"
+          controls
+          muted
+          poster="bmw-poster.jpg"
+        ></video>
+      </section>
+
+      <hr />
+
+      <!-- ======================================================= -->
+      <!--             TOPIC 6: EMMET SHORTCUT REFERENCE            -->
+      <!-- ======================================================= -->
+
+      <section>
+        <h2>Emmet Shortcuts in VS Code</h2>
+
+        <!--
+          Emmet is a built-in feature of VS Code that lets you write HTML much faster
+          by typing short abbreviations and pressing Tab to expand them into full code.
+
+          Here are the operators you need to know:
+
+          The greater than sign (child operator):
+          Type div>p and press Tab to get a div with a p tag nested inside it.
+
+          The plus sign (sibling operator):
+          Type h1+p and press Tab to get an h1 followed by a p on the same level.
+
+          The asterisk (multiplication operator):
+          Type li*3 and press Tab to get three li tags generated at once.
+
+          Parentheses for grouping:
+          Without parentheses, div>p+ul>li+span puts the span inside the ul as a sibling
+          to the li, because the chain keeps going deeper after ul.
+          With parentheses, div>(p+ul>li)+span forces the span to be a sibling of p and ul,
+          keeping it outside the list entirely at the div level.
+
+          A practical example to try in VS Code:
+          header>h1+p+nav>ul>li*3>a
+          This expands into a full header with a heading, a paragraph, and a nav containing
+          an unordered list with three anchor links.
+
+          Emmet is a habit that takes a little time to build but saves a huge amount of
+          time once you are comfortable with the operators.
+        -->
+
+        <p>
+          Emmet shortcuts are typed in your VS Code editor before expanding, not
+          inside the HTML file. The explanation in comments is a reference for when
+          you are actively writing HTML.
+        </p>
+      </section>
+
+      <hr />
+
+      <!-- ======================================================= -->
+      <!--         TOPIC 7: COMMON MISTAKES AND KEY CONCEPTS        -->
+      <!-- ======================================================= -->
+
+      <section>
+        <h2>Common Mistakes to Avoid and Key Concepts to Remember</h2>
+
+        <!--
+          MISTAKE 1: Not closing tags properly
+
+          Every tag that has an opening must have a closing tag, except for self-closing
+          tags like img, input, hr, br, meta, and link. Forgetting to close a tag like a
+          p or a div can break the layout of everything below it on the page.
+          Also, closing tags in the wrong order can cause issues. Always close the most
+          recently opened tag first.
+
+          MISTAKE 2: Placing block elements inside inline elements
+
+          Never put a div or a p inside a span or an anchor tag. Inline elements are not
+          designed to contain block elements. The correct approach is always to wrap inline
+          elements inside block elements, not the other way around.
+
+          MISTAKE 3: Using HTML tags for visual styling
+
+          Tags like center, font, and attributes like color on hr are outdated and should
+          never be used. All visual styling including colors, sizes, alignment, and spacing
+          should always be done with CSS. HTML is only for structure and meaning.
+
+          MISTAKE 4: Missing the alt attribute on images
+
+          The alt attribute on an img tag is not optional. Screen readers read the alt text
+          aloud for visually impaired users. If the image fails to load, the alt text is shown
+          in its place. Always write a meaningful description, not just a filename.
+
+          MISTAKE 5: Misusing the id and class attributes
+
+          The id attribute must be unique across the entire page. No two elements should ever
+          share the same id value. The class attribute, on the other hand, can be shared by as
+          many elements as you like. In general, use id for targeting one specific element and
+          use class for applying the same style or behavior to multiple elements.
+
+          MISTAKE 6: Not adding rel="noopener noreferrer" with target="_blank"
+
+          When you use target="_blank" to open a link in a new tab, the new page gains the
+          ability to access and control your original page through JavaScript. This is a known
+          security vulnerability. Always add rel="noopener noreferrer" to any anchor tag that
+          uses target="_blank" to prevent this.
+
+          MISTAKE 7: Skipping the lang attribute on the html tag
+
+          Always include lang="en" on the opening html tag. This tells browsers and assistive
+          technologies what language the page is in. Without it, screen readers may read your
+          content using the wrong language pronunciation, which makes the page inaccessible.
+
+          KEY CONCEPT: The difference between article and section
+
+          A section is a thematic grouping that needs the rest of the page to make sense.
+          An article is self-contained and should make complete sense even if you took it out
+          of the page entirely, like a blog post or a product review.
+          If the content could be copy-pasted somewhere else and still be understood on its own,
+          use article. If it is just a part of a larger topic on the page, use section.
+
+          KEY CONCEPT: The HTML5 doctype declaration
+
+          The first line of every HTML5 document must be <!DOCTYPE html> in lowercase.
+          This tells the browser to render the page using the modern HTML5 standard.
+          Without it, some browsers will enter a compatibility mode called quirks mode,
+          which can cause your layout and styles to behave unexpectedly.
+        -->
+
+        <p>
+          Read through the comments in this section carefully before moving to
+          CSS. These are the mistakes that most beginners make at least once,
+          and being aware of them early will save you a lot of debugging time
+          later on.
+        </p>
+      </section>
+    </main>
+
+    <!--
+      The aside tag is used for content that is related to the page but is not part of
+      the main flow. Common uses include sidebars, quick links, tips, related articles,
+      and supplementary information. It is placed outside of main but inside body.
+    -->
+    <aside>
+      <h3>Quick Links</h3>
+      <p>Check out my Chess.com profile:</p>
+      <a
+        href="https://www.chess.com/home"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        My Chess Rating
+      </a>
+    </aside>
+
+    <!--
+      The footer tag is for the closing section of the page. It typically contains
+      copyright information, contact details, links to social profiles, or credits.
+      You can use it as the footer for the entire page or for an individual section.
+    -->
+    <footer>
+      <hr />
+      <p>Made with love by Geetansh Bhandari.</p>
+    
+      <p>
+        <a href="mailto:geetanshbhandari530@gmail.com">
+          Send me your feedback via email.
+        </a>
+      </p>
+      <p>&copy; 2026 Geetansh Bhandari. All rights reserved.</p>
+    </footer>
+  </body>
+</html>

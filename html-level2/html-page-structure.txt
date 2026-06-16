@@ -1,0 +1,69 @@
+<!--
+    ============================================================
+    HTML PAGE STRUCTURE - NEVER FORGET!
+    ============================================================
+
+    <body>
+
+        <header>
+            - Logo, page title, site name
+            - Navigation links (nav tag goes here)
+        </header>
+
+        <nav>
+            - Can also sit outside header
+            - Only use for main navigation links
+        </nav>
+
+        <main>
+            - ALL primary content of the page goes here
+            - Only ONE main tag per page!
+
+            <section>
+                - Thematic grouping of content
+                - Needs the rest of the page to make sense
+                - Has its own heading usually
+            </section>
+
+            <section>
+                - As many sections as you need inside main ✅
+            </section>
+
+            <article>
+                - Self contained content
+                - Makes sense even outside the page
+                - Blog post, news story, product card
+            </article>
+
+            <div>
+                - Generic container for grouping
+                - No semantic meaning, just for styling
+            </div>
+
+        </main>
+
+        <aside>
+            - Related but non essential content
+            - Sidebar, tips, quick links
+            - OUTSIDE main ✅
+        </aside>
+
+        <footer>
+            - Copyright, contact, social links
+            - ALWAYS last, OUTSIDE main ✅
+        </footer>
+
+    </body>
+
+    ============================================================
+    SIMPLE RULE:
+    header → nav → main (sections live here) → aside → footer
+    ============================================================
+
+    IMPORTANT:
+    - Only ONE main tag per page ✅
+    - aside and footer are SIBLINGS of main, not children ✅
+    - section and article are CHILDREN of main ✅
+    - nav usually sits inside header ✅
+    ============================================================
+-->
