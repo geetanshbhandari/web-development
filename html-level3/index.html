@@ -7,6 +7,36 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <!--
+    ================================================================
+    HTML TABLES – QUICK REFERENCE
+    ================================================================
+
+    STRUCTURE:
+    <table>
+      <caption>Title</caption>    → optional title displayed above the table
+      <thead>...</thead>          → header row(s)
+      <tbody>...</tbody>          → main data rows
+      <tfoot>...</tfoot>          → optional footer / summary row
+    </table>
+
+    KEY TAGS:
+    <tr> → Table Row  |  <th> → Header Cell (bold + centered)  |  <td> → Data Cell
+
+    ROWSPAN & COLSPAN:
+    colspan="2" → cell stretches across 2 columns → remove 1 <td> from that row
+    rowspan="2" → cell stretches down 2 rows      → remove 1 <td> from the next row
+    Rule: a merged cell "eats" adjacent cells — always remove the extras to keep rows balanced.
+
+    GOOD PRACTICES:
+    → Always add <caption> for accessibility and SEO.
+    → Use <th> for headers (screen reader friendly).
+    → Use CSS for styling; avoid inline border/align attributes.
+    → Tables are for tabular data only — not for page layout.
+    ================================================================
+    -->
+
+    <!-- Basic table structure demo -->
     <table>
       <caption>
         Table Title
@@ -34,7 +64,7 @@
 
     <hr color="blue" />
 
-    <!-- practice question 1 -->
+    <!-- Practice 1: Basic table with student data (no rowspan/colspan) -->
     <table>
       <caption>
         Sample Table
@@ -81,10 +111,20 @@
         </tr>
       </tbody>
     </table>
+
     <hr color="blue" />
 
-    <!-- Practie Question 2 -->
+    <!--
+    Practice 2: colspan + rowspan demo (Food Menu)
+    Header row 1: "Item" (rowspan=2) | "Price" (colspan=2)
+    Header row 2: "INR" | "AUD"
+    → "Item" spans down 2 rows, so no extra <th> in row 2.
+    → "Price" spans 2 columns, so only 1 <th> in row 1, not 2.
+    -->
     <table>
+      <caption>
+        Food Menu
+      </caption>
       <thead>
         <tr>
           <th rowspan="2">Item</th>
@@ -116,12 +156,17 @@
 
     <hr color="blue" />
 
-    <!-- practice question 3 -->
+    <!--
+    Practice 3: Complex rowspan + colspan demo
+    Header row 1: empty (rowspan=2) | "Average" (colspan=2) | "Red Eyes" (rowspan=2)
+    Header row 2: "Height" | "Weight"  ← only 2 cells here (others consumed by rowspan)
+    Data rows 3–4: normal 4-cell rows.
+    -->
     <table>
       <caption>
-        A test table with merged cells
+        A Test Table with Merged Cells
       </caption>
-      <tbody>
+      <thead>
         <tr>
           <td rowspan="2"></td>
           <td colspan="2">Average</td>
@@ -131,6 +176,8 @@
           <td>Height</td>
           <td>Weight</td>
         </tr>
+      </thead>
+      <tbody>
         <tr>
           <td>Males</td>
           <td>1.9</td>
@@ -145,230 +192,66 @@
         </tr>
       </tbody>
     </table>
+
     <hr color="blue" />
 
     <!--
-============================================================
-HTML FORMS - COMPLETE SUMMARY
-============================================================
+    ================================================================
+    HTML FORMS – QUICK REFERENCE
+    ================================================================
 
-BASIC STRUCTURE:
-<form action="/backend-url" method="GET/POST">
-    inputs go here
-</form>
+    BASIC STRUCTURE:
+    <form action="/url" method="GET/POST">
+      inputs, labels, buttons...
+    </form>
 
-action  → URL where form data is sent (backend link)
-method  → HOW data is sent (GET or POST)
-        → GET  : data visible in URL (use for learning/search)
-        → POST : data hidden in body (use for passwords/payments)
+    action  → URL where form data is sent (backend endpoint)
+    method  → GET  : data visible in URL (good for search/learning)
+              POST : data hidden in body (use for passwords/sensitive data)
+    Default → GET, if method is not specified.
 
-If no method written → defaults to GET automatically!
+    LABEL + INPUT CONNECTION:
+    label "for" must match input "id" → makes the label clickable.
+    input "name" → key sent to the backend (required for submission).
+    input "id"   → frontend only (CSS/JS targeting). Never reaches the backend.
 
-============================================================
-LABEL + INPUT CONNECTION:
-============================================================
-label "for"  must match  input "id"  → makes label clickable!
-input "name" → sends data to backend (key in name=value pair)
-input "id"   → frontend only (CSS/JS targeting)
+    INPUT TYPES:
+    text     → plain text          email    → validates email format
+    password → hides characters    number   → numbers only
+    checkbox → multiple allowed    radio    → one selection per group
+    range    → slider (min/max/step)         file     → file upload
 
-<label for="user_name">Enter name:</label>
-<input type="text" id="user_name" name="user_name">
+    CHECKBOX vs RADIO:
+    Checkbox: multiple selections allowed.
+      → Related group options → same name, always give value.
+          Backend receives: sport=cricket&sport=badminton
+      → Independent yes/no → different names, value is optional.
+          Backend receives: age_check=on
 
-============================================================
-INPUT TYPES:
-============================================================
-type="text"     → normal text
-type="email"    → validates email format
-type="password" → hides characters
-type="number"   → numbers only
-type="checkbox" → multiple selections allowed
-type="radio"    → only ONE selection allowed
-type="range"    → slider (use min, max, step)
-type="file"     → file upload (image, PDF etc)
+    Radio: only one selection allowed per group.
+      → All in same group share the same name. Always give value.
+          Backend receives: gender=male
 
-============================================================
-CHECKBOX RULES:
-============================================================
-- Multiple can be selected
-- Group them → same "name" attribute
-- Always give "value" for multiple options
-  (without value → backend receives name=on only!)
-- For simple agree/disagree → value not needed
+    SELECT DROPDOWN:
+    → name goes on <select>, value goes on each <option>.
+    → Add the selected attribute for the default option.
 
-WHEN TO USE SAME NAME vs DIFFERENT NAME:
-→ Related options (choose from list) → SAME name ✅
-→ Independent conditions (yes/no each) → DIFFERENT names ✅
+    BUTTON TYPES:
+    submit → submits the form  |  reset → clears all fields  |  button → needs JavaScript
 
-Example of SAME name (grouped options):
-<input type="checkbox" name="sport" value="cricket">
-<input type="checkbox" name="sport" value="football">
-Backend receives: sport=cricket&sport=football
+    FILE UPLOAD RULE:
+    Always add enctype="multipart/form-data" to the <form> tag when using type="file".
+    Without it → browser sends only the filename string, NOT the actual file.
 
-Example of DIFFERENT names (independent conditions):
-<input type="checkbox" name="age_check">
-<input type="checkbox" name="terms_check">
-Backend receives: age_check=on&terms_check=on
+    ID vs NAME NAMING CONVENTION:
+    id   → camelCase  (e.g. userName)   → used by JavaScript/CSS
+    name → snake_case (e.g. user_name)  → used by the backend (Python, Node.js, etc.)
+    For learning: keeping both the same is perfectly fine.
+    ================================================================
+    -->
 
-✅ Multiple options:
-<input type="checkbox" name="sport" value="cricket">
-Backend receives: sport=cricket&sport=badminton
-
-✅ Simple agreement:
-<input type="checkbox" name="terms">
-Backend receives: terms=on
-
-============================================================
-RADIO BUTTON RULES:
-============================================================
-- Only ONE can be selected in a group
-- All radios in same group → same "name"
-- ALWAYS give "value" (backend needs to know which selected!)
-
-Backend receives: gender=male
-
-============================================================
-SELECT DROPDOWN:
-============================================================
-- "name" goes on <select> tag
-- "value" goes on each <option> tag
-- Use "selected" attribute for default option
-
-<select name="country">
-    <option value="australia" selected>Australia</option>
-    <option value="india">India</option>
-</select>
-Backend receives: country=australia
-
-============================================================
-TEXTAREA:
-============================================================
-- Use for large text input (feedback, bio etc)
-- rows and cols control size
-- No need for input tag, use textarea tag directly
-
-<textarea name="feedback" rows="5" cols="30"></textarea>
-
-============================================================
-BUTTON TYPES:
-============================================================
-type="submit"  → submits form to backend ✅
-type="reset"   → clears all fields ✅
-type="button"  → does nothing by default (needs JavaScript)
-
-============================================================
-FILE UPLOAD - CRITICAL RULE:
-============================================================
-When allowing users to upload files (images, PDFs etc)
-ALWAYS add enctype="multipart/form-data" to the form tag!
-
-WHY:
-By default forms send data as TEXT only.
-Without enctype → browser strips the actual file
-and just sends the filename string like "photo.jpg"
-Backend receives a useless string, NOT the real file! ❌
-
-With enctype → browser sends actual file bytes
-Backend receives the real file correctly! ✅
-
-❌ WRONG (file gets stripped!):
-<form action="/upload" method="POST">
-    <input type="file" name="profile_pic">
-</form>
-Backend only receives: "photo.jpg" (just a string!) ❌
-
-✅ CORRECT (actual file gets sent!):
-<form action="/upload" method="POST"
-      enctype="multipart/form-data">
-    <input type="file" name="profile_pic">
-</form>
-Backend receives: actual file bytes ✅
-
-SIMPLE RULE:
-type="file" in form → ALWAYS add enctype="multipart/form-data"
-No exceptions! This catches almost every developer once! 😄
-
-============================================================
-URL EXPERIMENT - MOST IMPORTANT LESSON:
-============================================================
-When GET method is used → data appears in URL like this:
-
-website.com/path?name=value&name2=value2
-
-?  → marks START of form data
-=  → separates name from value
-&  → separates multiple pairs
-
-GOOGLE EXPERIMENT:
-google.com/search?q=java
-          name↑  value↑
-
-YOUTUBE EXPERIMENT:
-youtube.com/results?search_query=java
-                name↑            value↑
-
-LESSON: Every search bar on every website is just an HTML
-form underneath! CSS makes it look pretty but structure
-is exactly what we built! 🔥
-
-============================================================
-HOW GOOGLE/YOUTUBE SEARCH ACTUALLY WORKS:
-============================================================
-Frontend (HTML) = just a delivery box 📦
-→ input type="text" accepts ANY text the user types
-→ That's it! Frontend is just the interface!
-
-Backend = the actual factory 🏭
-→ Receives your query (q=java+tutorial)
-→ Searches through BILLIONS of web pages
-→ AI algorithms rank results by relevance
-→ Sends back results page to your browser
-
-SIMPLE FLOW:
-You type → input type="text" captures it
-→ form submits → backend receives name=value
-→ backend processes (databases, algorithms, AI)
-→ backend returns results → you see the page!
-
-KEY INSIGHT:
-Google's search box = simple input type="text" ✅
-Behind it = thousands of servers + petabytes of data 🔥
-HTML = just the interface!
-Backend = where ALL the magic happens! 💪
-
-============================================================
-COMMON MISTAKES TO AVOID:
-============================================================
-❌ label "for" not matching input "id" → label not clickable
-❌ Missing "name" on input → data never reaches backend
-❌ Radio buttons with different "name" → multiple can select
-❌ Checkbox without "value" for options → backend gets name=on
-❌ Using POST for learning → can't see data in URL to debug
-❌ Forgetting "required" → form submits with empty fields
-❌ type="file" without enctype="multipart/form-data" → file stripped!
-❌ Confusing "id" and "name":
-   id   = frontend only (CSS/JS)
-   name = backend only (form submission)
-
-============================================================
-GOLDEN RULES:
-============================================================
-✅ label "for" = input "id" always!
-✅ name attribute = required for backend!
-✅ Checkbox groups = same name, always give value!
-✅ Radio groups = same name, always give value!
-✅ GET = learning/search, POST = sensitive data!
-✅ Every search bar on internet = just an HTML form!
-✅ input type="text" = just captures text, nothing more!
-✅ ALL intelligence lives in the backend, not the frontend!
-✅ type="file" = ALWAYS add enctype="multipart/form-data"!
-✅ Related options → SAME name!
-✅ Independent conditions → DIFFERENT names!
-============================================================
--->
-
-    <!-- Practice of Forms -->
-
-    <h2>Form - Geetansh Bhandari</h2>
+    <!-- Form practice: all common input types demonstrated -->
+    <h2>Form – Geetansh Bhandari</h2>
     <form
       action="/action"
       enctype="multipart/form-data"
@@ -376,19 +259,6 @@ GOLDEN RULES:
       method="post"
     >
       <div>
-        <!--
-ID vs NAME NAMING CONVENTION:
-id   → camelCase  → userName    (used by JavaScript/CSS frontend)
-name → snake_case → user_name   (used by backend Python/Node etc)
-
-For learning stage → keeping both same is perfectly fine! ✅
-<input id="user_name" name="user_name">
-
-In real projects:
-<input id="userName" name="user_name">
-id   → JS uses it  → camelCase
-name → backend uses it → snake_case
--->
         <label for="username">Enter your name: </label>
         <input
           type="text"
@@ -432,6 +302,7 @@ name → backend uses it → snake_case
         />
       </div>
 
+      <!-- Independent yes/no checkboxes → different names, no value needed -->
       <div>
         <input type="checkbox" id="age_check" name="age_check" required />
         <label for="age_check">Kindly confirm that you are 18+</label>
@@ -446,9 +317,9 @@ name → backend uses it → snake_case
 
       <br />
 
+      <!-- Grouped checkboxes → same name, value required for each option -->
       <h4>Kindly select your favourite sport(s) from the options below:</h4>
       <div>
-        <!-- value was important to give in these cases :) -->
         <input type="checkbox" id="cricket" name="sport" value="cricket" />
         <label for="cricket">Cricket</label>
       </div>
@@ -463,6 +334,7 @@ name → backend uses it → snake_case
 
       <br />
 
+      <!-- Radio buttons → same name, value always required -->
       <h4>Kindly select your gender from the options below:</h4>
       <div>
         <input type="radio" id="male" name="gender" value="male" />
@@ -481,20 +353,24 @@ name → backend uses it → snake_case
         />
         <label for="transgender">Transgender</label>
       </div>
+
       <br />
+
+      <!-- Dropdown: name on <select>, value on each <option>, selected = default -->
       <div>
         <label for="user_residency">Select Residency Status: </label>
-
         <select name="user_residency" id="user_residency">
           <option value="australian citizen" selected>
             Australian Citizen
           </option>
-          <option value="australian pr">Australian PR holder</option>
+          <option value="australian pr">Australian PR Holder</option>
           <option value="international student">International Student</option>
         </select>
       </div>
+
       <br />
 
+      <!-- Range slider: min, max, step control the slider behaviour -->
       <div>
         <label for="volume_level">Volume Level</label>
         <input
@@ -507,14 +383,24 @@ name → backend uses it → snake_case
         />
       </div>
 
+      <br />
+
+      <!-- File upload: enctype="multipart/form-data" on <form> is mandatory -->
       <div>
-        <label for="user_feeback"
+        <label for="user_resume">Kindly upload your resume here: </label>
+        <input type="file" id="user_resume" name="user_resume" />
+      </div>
+
+      <br />
+
+      <div>
+        <label for="user_feedback"
           >Kindly drop your valuable feedback here:
         </label>
         <textarea
-          name="user_feeback"
-          id="user_feeback"
-          placeholder="write your feedback here"
+          name="user_feedback"
+          id="user_feedback"
+          placeholder="Write your feedback here"
           rows="5"
           cols="30"
         ></textarea>
@@ -526,17 +412,31 @@ name → backend uses it → snake_case
         <button type="reset">Reset</button>
       </div>
     </form>
+
     <hr color="blue" />
 
-    <!-- Doing youtube, google and reddit search experiments -->
+    <!--
+    URL EXPERIMENT – How GET works:
+    website.com/path?name=value&name2=value2
+    ?  → marks the start of form data
+    =  → separates name from value
+    &  → separates multiple pairs
+
+    Every search bar on the internet is just an HTML form underneath.
+    Google:  google.com/search?q=java
+    YouTube: youtube.com/results?search_query=java
+    Frontend = captures the input. Backend = where all the magic happens.
+    -->
+
+    <!-- YouTube, Google, and Reddit search experiments -->
     <form action="https://www.youtube.com/results" target="_blank">
       <div>
-        <label for="search_query">Youtube Search Experiment</label>
+        <label for="search_query">YouTube Search Experiment</label>
         <input
           type="text"
           id="search_query"
           name="search_query"
-          placeholder="Search on Youtube"
+          placeholder="Search on YouTube"
         />
         <button type="submit">Search</button>
       </div>
@@ -544,18 +444,51 @@ name → backend uses it → snake_case
 
     <form action="https://www.google.com/search" target="_blank">
       <div>
-        <label for="q">Google Search Experiment</label>
-        <input type="text" id="q" name="q" placeholder="Search on Google" />
+        <label for="google_q">Google Search Experiment</label>
+        <input
+          type="text"
+          id="google_q"
+          name="q"
+          placeholder="Search on Google"
+        />
         <button type="submit">Search</button>
       </div>
     </form>
 
     <form action="https://www.reddit.com/search" target="_blank">
       <div>
-        <label for="q1">Reddit Search Experiment</label>
-        <input type="text" id="q1" name="q" placeholder="Search on Reddit" />
+        <label for="reddit_q">Reddit Search Experiment</label>
+        <input
+          type="text"
+          id="reddit_q"
+          name="q"
+          placeholder="Search on Reddit"
+        />
         <button type="submit">Search</button>
       </div>
     </form>
+
+    <!--
+    ================================================================
+    COMMON MISTAKES TO AVOID
+    ================================================================
+
+    TABLES:
+    ❌ Wrong cell count in a row after rowspan/colspan → misaligned columns
+    ❌ Not removing the extra <td>/<th> that a merged cell replaces
+    ❌ Missing <caption> → bad for accessibility and SEO
+    ❌ Using tables for page layout (use CSS Flexbox / Grid instead)
+
+    FORMS:
+    ❌ label "for" not matching input "id" → label not clickable
+    ❌ Missing "name" on input → data never reaches the backend
+    ❌ Radio buttons with different "name" → multiple options can be selected
+    ❌ Grouped checkboxes without "value" → backend only receives name=on
+    ❌ type="file" without enctype="multipart/form-data" → actual file is stripped
+    ❌ Confusing "id" (frontend) with "name" (backend) — both are needed
+    ❌ Using POST while learning → data is hidden, can't debug via URL
+    ❌ Forgetting "required" → form submits with empty critical fields
+    ================================================================
+    -->
   </body>
 </html>
