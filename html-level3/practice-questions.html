@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Practice Questions (Tables and Forms)</title>
+    <link rel="stylesheet" href="practice-questions.css" />
+  </head>
+  <body>
+    <!--
+      Practice Question 1
+
+      Key lesson learned here: rowspan CANNOT cross section boundaries.
+      If "Info" is in <thead> and the data rows are in <tbody>, the rowspan
+      will never reach into <tbody> no matter what number you give it — the
+      browser just ignores it beyond the section it lives in.
+
+      Fix: put ALL rows (header + data) inside a single <tbody>.
+      Then rowspan works perfectly across all of them.
+
+      Also: we used <th> instead of <td> for the cells that needed to be bold
+      (Info, Name, Address, City, House) — <th> is bold by default and is
+      semantically correct for header cells.
+    -->
+    <table>
+      <caption>
+        Student Information
+      </caption>
+      <tbody>
+        <tr>
+          <th rowspan="6">Info</th>
+          <th rowspan="2">Name</th>
+          <th colspan="2">Address</th>
+        </tr>
+        <tr>
+          <th>City</th>
+          <th>House</th>
+        </tr>
+        <tr>
+          <td>A</td>
+          <td>Delhi</td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td>B</td>
+          <td>Mumbai</td>
+          <td>2</td>
+        </tr>
+        <tr>
+          <td>C</td>
+          <td>Kolkata</td>
+          <td>3</td>
+        </tr>
+        <tr>
+          <td>D</td>
+          <td>Pune</td>
+          <td>4</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <hr color="blue" />
+
+    <!-- Practice Question 2 -->
+
+    <form action="/action" target="_blank">
+      <div>
+        <label for="user_name">Name: </label>
+        <input type="text" id="user_name" name="user_name" required />
+      </div>
+
+      <br />
+      <div>
+        Sex:
+        <input
+          type="radio"
+          id="pq2_male"
+          name="pq2_gender"
+          value="male"
+          required
+        />
+        <label for="pq2_male">Male</label>
+
+        <input type="radio" name="pq2_gender" id="pq2_female" value="female" />
+        <label for="pq2_female">Female</label>
+      </div>
+      <br />
+      <div>
+        <label for="country">Country: </label>
+        <select name="country" id="country">
+          <option value="Australia">Australia</option>
+          <option value="India">India</option>
+          <option value="Germany">Germany</option>
+          <option value="default" selected>Select an option</option>
+        </select>
+      </div>
+      <br />
+      <div>
+        <label for="message">Message:</label>
+        <br />
+        <textarea
+          name="message"
+          id="message"
+          rows="5"
+          cols="30"
+          required
+        ></textarea>
+      </div>
+      <br />
+      <div>
+        <input type="checkbox" id="subscription" name="subscription" />
+        <label for="subscription">Subscribe?</label>
+      </div>
+      <br />
+      <button type="submit">Submit</button>
+    </form>
+
+    <!--
+============================================================
+RADIO BUTTON REQUIRED RULE:
+============================================================
+Only ONE radio button in the group needs required!
+Because all share the same name → browser treats as one group.
+
+✅ CORRECT:
+<input type="radio" name="gender" value="male" required>
+<input type="radio" name="gender" value="female">
+← only one required, entire group becomes mandatory! ✅
+
+❌ WRONG (redundant):
+<input type="radio" name="gender" value="male" required>
+<input type="radio" name="gender" value="female" required>
+← works but unnecessary! ❌
+
+DIFFERENT FROM CHECKBOXES:
+Independent checkboxes → required on EACH one ✅
+Grouped radio buttons  → required on ONE only ✅
+============================================================
+
+============================================================
+TEXTAREA WHITESPACE TRAP:
+============================================================
+Never put spaces or indentation inside textarea tags!
+Browser treats whitespace as content →
+required becomes ineffective → form submits empty! 😅
+
+❌ WRONG - has whitespace, required won't work!
+<textarea required>
+</textarea>
+
+❌ ALSO WRONG - indentation counts as content!
+<textarea required>
+        </textarea>
+
+✅ CORRECT - truly empty, required works!
+<textarea required></textarea>
+
+⚠️ Watch out for Prettier auto-formatting!
+Prettier adds indentation inside textarea automatically!
+Always double check after Prettier formats your code!
+============================================================
+-->
+
+    <hr color="blue" />
+
+    <!-- practice question 3 -->
+    <h2>Feedback Form</h2>
+    <form action="/action" target="_blank">
+      <div>
+        <label for="fb_name">Name: </label>
+        <input type="text" id="fb_name" name="fb_name" required />
+      </div>
+
+      <br />
+
+      <div>
+        <label for="fb_email">Email: </label>
+        <input type="email" id="fb_email" name="fb_email" required />
+      </div>
+      <br />
+
+      <div>
+        <label for="message_2">Message:</label>
+        <br />
+        <textarea
+          name="message"
+          id="message_2"
+          rows="5"
+          cols="30"
+          required
+        ></textarea>
+      </div>
+
+      <br />
+
+      <div>
+        Rate us out of 5:
+        <br />
+        <input
+          type="radio"
+          id="oneRating"
+          name="user_rating"
+          value="1"
+          required
+        />
+        <label for="oneRating">1</label>
+        <br />
+        <input type="radio" name="user_rating" id="twoRating" value="2" />
+        <label for="twoRating">2</label>
+        <br />
+        <input type="radio" name="user_rating" id="threeRating" value="3" />
+        <label for="threeRating">3</label>
+        <br />
+        <input type="radio" name="user_rating" id="fourRating" value="4" />
+        <label for="fourRating">4</label>
+        <br />
+        <input type="radio" name="user_rating" id="fiveRating" value="5" />
+        <label for="fiveRating">5</label>
+      </div>
+
+      <br />
+
+      <button type="submit">Send your message!</button>
+    </form>
+  </body>
+</html>
