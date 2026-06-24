@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS Level 1 — Iron Man | Geetansh Bhandari</title>
+    <link rel="stylesheet" href="style.css" />
+
+    <!--
+      THE 3 WAYS TO ADD CSS TO HTML
+      =====================================================================
+
+      METHOD 1 — INLINE CSS  (style attribute directly on the element)
+        <h1 style="color: red; font-size: 40px;">Iron Man</h1>
+        ✅ Quick one-off override
+        ❌ Can't reuse, clutters HTML, hardest to maintain
+
+      METHOD 2 — INTERNAL CSS  (<style> tag inside <head>)
+        <style>
+          h1 { color: red; }
+        </style>
+        ✅ Fine for quick single-page experiments
+        ❌ Doesn't scale — can't share styles across multiple pages
+
+      METHOD 3 — EXTERNAL CSS  (<link> tag pointing to a .css file)  ← USE THIS
+        <link rel="stylesheet" href="style.css" />
+        ✅ One file styles all pages of the website
+        ✅ Clean separation — HTML handles structure, CSS handles styling
+        ✅ Standard approach in every real project
+
+      =====================================================================
+      ⚠️  MISTAKES TO AVOID:
+      - Missing DOCTYPE on line 1 — always keep it as the very first line
+      - Typo in href="style.css" — if the path is wrong, zero styles load
+      - Putting <style> tag inside <body> instead of <head>
+      - Relying on Method 1 (inline) for all styling — use Method 3 instead
+      =====================================================================
+    -->
+  </head>
+
+  <body>
+    <!-- PAGE HEADER -->
+    <header>
+      <h1>Iron Man</h1>
+      <p>Tony Stark — Genius. Billionaire. Playboy. Philanthropist.</p>
+
+      <!-- METHOD 1 in action — inline style on this button only -->
+      <button style="color: white; background-color: darkred">Suit Up</button>
+    </header>
+
+    <hr />
+
+    <!-- INTRODUCTION -->
+    <section>
+      <h2>Who Is Iron Man?</h2>
+      <p>
+        Iron Man is a superhero appearing in American comic books published by
+        Marvel Comics. The character was co-created by writer and editor
+        <em>Stan Lee</em>, developed by scripter <em>Larry Lieber</em>, and
+        designed by artists Don Heck and Jack Kirby. His first appearance was in
+        <span>Tales of Suspense #39</span> (March 1963), and he received his own
+        title with <span>Iron Man #1</span> (May 1968).
+      </p>
+      <button>Learn More</button>
+    </section>
+
+    <hr />
+
+    <!-- PUBLICATION HISTORY -->
+    <section>
+      <h2>Publication History</h2>
+
+      <h3>Premiere</h3>
+      <p>
+        Iron Man's premiere in <em>Tales of Suspense #39</em> (1963) was a
+        collaboration among editor Stan Lee, scripter Larry Lieber, and
+        story-artist Don Heck. Stan Lee wanted to create an arms dealer as a
+        superhero and make readers love him anyway.
+      </p>
+
+      <hr />
+
+      <h3>Solo Series</h3>
+      <p>
+        After issue #99 (March 1968), <em>Tales of Suspense</em> was renamed
+        <span>Captain America</span>. Iron Man debuted solo with
+        <em>Iron Man #1</em> (May 1968), also known as
+        <span>The Invincible Iron Man</span>.
+      </p>
+    </section>
+
+    <hr />
+
+    <!-- FICTIONAL BIOGRAPHY -->
+    <section>
+      <h2>Fictional Biography</h2>
+      <p>
+        Anthony Edward Stark — Tony Stark — is the son of Howard Stark, a
+        wealthy industrialist who leads Stark Industries. A boy genius, he
+        entered MIT at age 15 to study engineering and physics. After his
+        parents were killed in a car accident, he inherited the company and
+        became one of the most powerful people on the planet.
+      </p>
+    </section>
+
+    <hr />
+
+    <!-- DIV — used here to demo box model CSS (height, width, border, border-radius, text-align) -->
+    <div>
+      <p>Stark Industries — Arc Reactor Division</p>
+    </div>
+
+    <hr />
+
+    <!-- THE AVENGERS — h3 tags here show text-transform: uppercase from style.css -->
+    <section>
+      <h2>The Avengers</h2>
+      <h3>Iron Man</h3>
+      <h3>Thor</h3>
+      <h3>Captain America</h3>
+      <h3>Hulk</h3>
+    </section>
+
+    <hr />
+
+    <!-- CONTACT -->
+    <section>
+      <h2>Contact</h2>
+      <p>
+        For queries, reach out to
+        <a href="mailto:geetanshbhandari530@gmail.com" target="_blank"
+          >Geetansh Bhandari</a
+        >
+        <!-- href="mailto:..."  → opens the user's email app with this address pre-filled
+             target="_blank"    → opens the link in a new browser tab -->
+      </p>
+    </section>
+
+    <hr />
+
+    <!-- FOOTER -->
+    <footer>
+      <p>&copy; 2026 Geetansh Bhandari (FeverGamez). All rights reserved.</p>
+      <!-- &copy; is an HTML entity for the © copyright symbol -->
+    </footer>
+  </body>
+</html>

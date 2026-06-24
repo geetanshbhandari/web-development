@@ -1,0 +1,267 @@
+/* ================================================================
+   CSS LEVEL 1 — style.css
+   Author  : Geetansh Bhandari
+   Concept : Core CSS Properties (element selectors only)
+   ================================================================ */
+
+/* ================================================================
+   COLOR SYSTEMS IN CSS
+   ================================================================
+   Two most common ways to write colors in CSS:
+
+   RGB → rgb(red, green, blue)   each value: 0 to 255
+     rgb(255, 0, 0)      → red
+     rgb(0, 0, 0)        → black
+     rgb(255, 255, 255)  → white
+     Easy to tweak manually — just adjust the numbers.
+
+   HEX → #RRGGBB   Hexadecimal shorthand for RGB (base-16: 0–9, A–F)
+     #FF0000 → red  |  #000000 → black  |  #FFFFFF → white
+     HEX is shorter and the most commonly used format in web dev.
+
+   Both represent the exact same colors — just different syntax.
+   Tip: Use Google Color Picker to find any HEX or RGB value instantly.
+   ================================================================ */
+
+/* ================================================================
+   UNIVERSAL SELECTOR  *
+   ================================================================
+   Targets every single element on the page without exception.
+   Lowest specificity of all selectors — any other rule overrides it.
+   Best used for global resets or default base styles.
+   ================================================================ */
+* {
+  line-height: 1.5;
+  /* Vertical spacing between lines of text.
+     Always use a UNITLESS number — not px.
+     1.5 means 1.5 × the element's own font-size.
+     ⚠️ Mistake to avoid: line-height: 24px → breaks when font-size changes.
+        Unitless scales correctly with font-size. px does not. */
+
+  letter-spacing: 2px;
+  /* Horizontal spacing between individual characters.
+     Mainly used on headings for a clean, premium look.
+     ⚠️ Mistake to avoid: applying letter-spacing to body paragraphs
+        — it looks unnatural and hurts readability. Keep it for headings. */
+}
+
+/* ================================================================
+   BODY
+   ================================================================ */
+body {
+  background-color: rgb(245, 245, 245);
+  /* Sets the background color of the entire page.
+     background-color works on any element, not just body. */
+}
+
+/* ================================================================
+   H1 — Main Title
+   Covers: color, text-align, font-weight, font-size,
+           font-family, text-decoration, letter-spacing
+   ================================================================ */
+h1 {
+  color: rgb(0, 0, 0);
+
+  text-align: center;
+  /* Aligns text WITHIN its parent container — NOT the full page width.
+     If this h1 sits inside a 400px box, center means centered in those 400px.
+     Values: left | center | right | justify
+     Rule of thumb → paragraphs: left  |  headings: center */
+
+  font-weight: 900;
+  /* Boldness scale: 100 (thinnest) → 900 (heaviest).
+     400 = normal  |  700 = bold  |  900 = black (extra heavy)
+     ⚠️ Mistake to avoid: font-weight: 9 — wrong, scale is 100 to 900, not 1 to 9. */
+
+  font-size: 40px;
+  /* Controls the size of the text. px is the most straightforward unit for beginners. */
+
+  font-family: Arial, Helvetica, sans-serif;
+  /* Sets the typeface. ALWAYS list fallbacks in order:
+       1st  → preferred font (Arial)
+       2nd+ → alternatives  (Helvetica)
+       Last → generic family (sans-serif / serif / monospace) — browser picks any available
+     ⚠️ Mistake to avoid: writing only one font with no fallback.
+        If that font isn't installed on the user's device, the browser has nothing to use. */
+
+  text-decoration: red dashed underline;
+  /* Shorthand: color  style  line-type
+     Line types : underline | overline | line-through
+     Styles     : solid | dashed | dotted | double | wavy
+     ⚠️ Most important use: text-decoration: none → removes the default
+        underline from <a> anchor tags. You will use this constantly. */
+
+  letter-spacing: 3px;
+  /* Overrides the universal * rule of 2px — more spacing for the main title. */
+}
+
+/* ================================================================
+   H2 — Section Headings
+   ================================================================ */
+h2 {
+  color: rgb(0, 150, 180);
+  text-align: center;
+  font-weight: 900;
+  font-size: 26px;
+  font-family: Arial, Helvetica, sans-serif;
+  text-decoration: black dotted underline;
+}
+
+/* ================================================================
+   H3 — Sub-Headings
+   Demonstrates: text-transform
+   ================================================================ */
+h3 {
+  color: rgb(200, 60, 0);
+  text-align: center;
+  font-weight: normal;
+  /* font-weight: normal = 400 on the numeric scale */
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  /* ⚠️ Font names with spaces MUST be wrapped in quotes: "Arial Narrow Bold"
+        Without quotes the browser ignores that font entirely. */
+
+  text-transform: uppercase;
+  /* Changes the visual display of text WITHOUT touching the HTML.
+       uppercase  → ALL CAPS      ("Iron Man" displays as "IRON MAN")
+       lowercase  → all lowercase ("Iron Man" displays as "iron man")
+       capitalize → Title Case    ("iron man" displays as "Iron Man")
+       none       → no change (default)
+     The HTML content stays exactly as written — only the display changes. */
+}
+
+/* ================================================================
+   P — Paragraph Text
+   Covers: color, font-size, font-weight, line-height, font-family
+   ================================================================ */
+p {
+  color: rgb(60, 0, 180);
+  font-size: 15px;
+  font-weight: normal;
+  line-height: 1.8;
+  /* Slightly more than the universal 1.5 — gives paragraphs extra breathing room */
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+}
+
+/* ================================================================
+   SPAN — Inline Highlight
+   ================================================================
+   <span> by itself has zero visual effect — it's a plain wrapper.
+   Styling it via CSS lets you highlight a specific piece of text
+   inline without breaking the flow of the surrounding sentence.
+   ================================================================ */
+span {
+  background-color: yellow;
+  font-weight: bold;
+  text-decoration: rgb(180, 0, 255) double underline;
+}
+
+/* ================================================================
+   BUTTON
+   ================================================================ */
+button {
+  background-color: rgb(255, 200, 0);
+  color: rgb(0, 0, 0);
+  font-weight: bold;
+}
+
+/* ================================================================
+   A — Anchor / Link
+   ================================================================ */
+a {
+  text-decoration: none;
+  /* Removes the default blue underline — the most used text-decoration value.
+     ⚠️ Mistake to avoid: forgetting this and leaving the browser's default
+        blue-underlined look on a link you are trying to style. */
+  color: rgb(0, 140, 70);
+  font-weight: bold;
+}
+
+/* ================================================================
+   DIV — Box Model Demo
+   Covers: height, width, background-color,
+           text-align (relative to container — important!)
+   ================================================================ */
+div {
+  height: 150px;
+  /* Fixed height of the box */
+
+  width: 350px;
+  /* Fixed width. width: auto lets the browser calculate it from the parent. */
+
+  background-color: #ffa511;
+  /* HEX color — same color as rgb(255, 165, 17) */
+
+  text-align: right;
+  /* CRITICAL POINT — text-align is relative to the container:
+     "right" means text aligns to the RIGHT EDGE of this 350px div.
+     The div itself is still on the left side of the page.
+     text-align only controls how content sits INSIDE its own box.
+     ⚠️ Mistake to avoid: thinking text-align: center centers the div
+        on the page — it only centers the text inside the div. */
+}
+
+/* ================================================================
+   SECTION — Card-style Separator
+   ================================================================ */
+section {
+  background-color: white;
+}
+
+/* ================================================================
+   FOOTER
+   ================================================================ */
+footer {
+  text-align: right;
+  /* text-align is an inherited property — the <p> inside footer
+     inherits this automatically. No need to write a separate rule
+     for footer p. Inheritance passes certain properties down to children. */
+}
+
+/* ================================================================
+   MISTAKES TO AVOID IN CSS — QUICK REFERENCE
+   ================================================================
+   1. line-height: 24px      → use unitless: line-height: 1.5
+   2. font-weight: 9         → wrong scale, use 100–900: font-weight: 900
+   3. font-family with no fallback → browser has nothing if the font is missing
+   4. Thinking text-align centers the element on the page
+      → it only aligns content INSIDE the element's own container
+   5. forgetting text-decoration: none on <a> → default underline stays
+   6. Font name with spaces and no quotes → "Arial Narrow Bold", not Arial Narrow Bold
+   7. Applying letter-spacing to paragraph text → use only for headings
+   8. Text color too similar to background → kills readability
+   ================================================================ */
+
+/* ================================================================
+   CSS SPECIFICITY — KEY CONCEPT (understand this, debug anything)
+   ================================================================
+   When two rules target the same element and the same property,
+   the browser picks the winner using SPECIFICITY — a scoring system.
+
+   HIERARCHY  (weakest → strongest):
+   ┌──────────────────────────────────────────────────────────┐
+   │  Selector Type          Example            Score         │
+   │  ─────────────────────────────────────────────────────── │
+   │  Universal selector     *                    0           │
+   │  Element selector       div, p, h1           1           │
+   │  Class selector         .box  (future)      10           │
+   │  ID selector            #main (future)     100           │
+   │  Inline style           style=""          1000           │
+   └──────────────────────────────────────────────────────────┘
+
+   REAL EXAMPLE FROM THIS VERY FILE:
+     * { letter-spacing: 2px; }     ← score 0, applies to everything
+     h1 { letter-spacing: 3px; }    ← score 1, WINS for h1 (overrides *)
+
+   That's why h1 shows 3px, not 2px.
+   The element selector (h1) always beats the universal selector (*).
+
+   TIE-BREAKER — ORDER OF APPEARANCE:
+   If two rules have the EXACT same specificity score,
+   the rule written LATER in the CSS file wins.
+     h1 { color: red; }   ← written first
+     h1 { color: blue; }  ← written later → BLUE WINS
+
+   Why this matters:
+   90% of "why isn't my CSS applying?!" bugs come down to specificity.
+   Know this rule and you can debug almost any styling conflict.
+   ================================================================ */
